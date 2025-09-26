@@ -7,19 +7,19 @@ export async function POST(req: Request) {
 
     // Configure transporter
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
+      host: process.env.NEXT_PUBLIC_SMTP_HOST,
+      port: Number(process.env.NEXT_PUBLIC_SMTP_PORT),
       secure: false, // true for 465
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: process.env.NEXT_PUBLIC_SMTP_USER,
+        pass: process.env.NEXT_PUBLIC_SMTP_PASS,
       },
     });
 
     // Send email always to admin
     await transporter.sendMail({
-      from: `"Website Contact" <${process.env.SMTP_USER}>`,
-      to: "admin@amrinnovations.com",
+      from: `"Website Contact" <${process.env.NEXT_PUBLIC_SMTP_USER}>`,
+      to: "kalidas@amrinnovations.com",
       subject,
       text: message,
     });
