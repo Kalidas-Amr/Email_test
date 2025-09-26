@@ -2,7 +2,6 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [to, setTo] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
@@ -13,7 +12,7 @@ export default function Home() {
     const res = await fetch("/api/send", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ to, subject, message }),
+      body: JSON.stringify({ subject, message }), // no "to"
     });
 
     const data = await res.json();
@@ -22,15 +21,7 @@ export default function Home() {
 
   return (
     <div className="p-6 max-w-md mx-auto">
-      <h1 className="text-xl font-bold mb-4">Send Email</h1>
-
-      <input
-        className="border p-2 w-full mb-2"
-        type="email"
-        placeholder="Recipient Email"
-        value={to}
-        onChange={(e) => setTo(e.target.value)}
-      />
+      <h1 className="text-xl font-bold mb-4">Contact Us</h1>
 
       <input
         className="border p-2 w-full mb-2"
